@@ -1,6 +1,6 @@
 // Campo de formulario reutilizable: una etiqueta junto con su campo de entrada
-// Props: id, etiqueta, tipo, valor, onCambio, maxLongitud y autoComplete
-function CampoFormulario({ id, etiqueta, tipo = 'text', valor, onCambio, maxLongitud, autoComplete }) {
+// Props: id, etiqueta, tipo, valor, onCambio, placeholder, maxLongitud y autoComplete
+function CampoFormulario({ id, etiqueta, tipo = 'text', valor, onCambio, placeholder, maxLongitud, autoComplete }) {
     return (
         <div className="campo">
             <label htmlFor={id}>{etiqueta}</label>
@@ -10,6 +10,7 @@ function CampoFormulario({ id, etiqueta, tipo = 'text', valor, onCambio, maxLong
                 type={tipo}
                 value={valor}
                 onChange={onCambio}
+                placeholder={placeholder}
                 maxLength={maxLongitud}
                 autoComplete={autoComplete}
             />

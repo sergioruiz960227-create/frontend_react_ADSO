@@ -1,92 +1,199 @@
-/* Estilos base de la aplicación */
+/* Estilos del módulo de autenticación.
+   Reutiliza la paleta, la tipografía y los componentes visuales del front-end de Tienda Nueva. */
 :root {
-    --color-principal: #2d8600;
-    --color-principal-oscuro: #236800;
-    --color-texto: #1f2933;
-    --color-fondo: #f3f5f7;
-    --color-borde: #cbd2d9;
-    --color-error: #b42318;
-    --color-error-fondo: #fdecea;
-    --color-exito: #1b5e20;
-    --color-exito-fondo: #e6f4ea;
+    --verde-principal: #14b8a6;
+    --verde-hover: #0d9488;
+    --azul-oscuro: #061633;
+    --fondo-gris: #f8fafc;
+    --borde: #e2e8f0;
+    --texto-oscuro: #111827;
+    --texto-secundario: #6b7280;
+    --error-fondo: #fef2f2;
+    --error-borde: #fecaca;
+    --error-texto: #b91c1c;
+    --error-icono: #dc2626;
+    --exito-fondo: #f0fdfa;
+    --exito-borde: #99f6e4;
+    --exito-texto: #0f766e;
+    --radius-inputs: 10px;
+    --radius-card: 16px;
 }
 
+/* ==============================
+   REINICIO GENERAL
+   ============================== */
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    font-family: system-ui, sans-serif;
-    color: var(--color-texto);
-    background: var(--color-fondo);
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: var(--fondo-gris);
+    color: var(--texto-oscuro);
 }
 
-/* Centra el formulario en la pantalla */
-.contenedor-centrado {
+/* ==============================
+   TARJETA DE LOGIN Y REGISTRO
+   ============================== */
+.login-container {
+    width: 100%;
     min-height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 1rem;
+    align-items: center;
+    padding: 20px;
 }
 
-/* Tarjeta del formulario */
-.formulario {
-    width: 100%;
-    max-width: 400px;
-    padding: 2rem;
+.login-card {
+    width: 380px;
+    max-width: 100%;
+    padding: 40px;
     background: #ffffff;
-    border: 1px solid var(--color-borde);
-    border-radius: 8px;
+    border: 1px solid var(--borde);
+    border-radius: var(--radius-card);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
-.formulario h1 {
-    margin: 0 0 1.25rem;
-    font-size: 1.5rem;
+.login-card h1 {
+    margin-bottom: 10px;
+    text-align: center;
+    color: var(--azul-oscuro);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
-.campo {
+.subtitulo {
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--texto-secundario);
+    font-size: 14px;
+}
+
+/* ==============================
+   MENSAJES DE ERROR Y DE ÉXITO
+   ============================== */
+.mensaje {
     display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-    margin-bottom: 1rem;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 22px;
+    padding: 14px;
+    border-radius: var(--radius-inputs);
 }
 
-.campo label {
-    font-weight: 600;
+.mensaje-error {
+    background: var(--error-fondo);
+    border: 1px solid var(--error-borde);
+    color: var(--error-texto);
 }
 
-.campo input {
-    padding: 0.6rem 0.75rem;
-    font-size: 1rem;
-    border: 1px solid var(--color-borde);
-    border-radius: 6px;
+.mensaje-exito {
+    background: var(--exito-fondo);
+    border: 1px solid var(--exito-borde);
+    color: var(--exito-texto);
 }
 
-.campo input:focus {
-    outline: 2px solid var(--color-principal);
-    border-color: var(--color-principal);
-}
-
-/* Botones */
-button {
-    padding: 0.65rem 1rem;
-    font-size: 1rem;
-    font-weight: 600;
+.icono-mensaje {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
     color: #ffffff;
-    background: var(--color-principal);
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
 }
 
-.formulario button {
+.mensaje-error .icono-mensaje {
+    background: var(--error-icono);
+}
+
+.mensaje-exito .icono-mensaje {
+    background: var(--verde-principal);
+}
+
+.mensaje strong {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.mensaje p {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* ==============================
+   CAMPOS DEL FORMULARIO
+   ============================== */
+.campo {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--texto-oscuro);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+input {
     width: 100%;
+    padding: 12px;
+    border: 1px solid var(--borde);
+    border-radius: var(--radius-inputs);
+    background: #ffffff;
+    color: var(--texto-oscuro);
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+input:focus {
+    border-color: var(--verde-principal);
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.12);
+}
+
+input::placeholder {
+    color: #9ca3af;
+}
+
+/* ==============================
+   BOTONES
+   ============================== */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: var(--radius-inputs);
+    background: var(--verde-principal);
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background 0.3s ease,
+        transform 0.2s ease;
 }
 
 button:hover:not(:disabled) {
-    background: var(--color-principal-oscuro);
+    background: var(--verde-hover);
+}
+
+button:active:not(:disabled) {
+    transform: translateY(1px);
 }
 
 button:disabled {
@@ -94,70 +201,98 @@ button:disabled {
     cursor: not-allowed;
 }
 
-.boton-secundario {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.9rem;
-    color: var(--color-principal);
-    background: transparent;
-    border: 1px solid var(--color-principal);
+/* ==============================
+   ENLACES
+   ============================== */
+.links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
 }
 
-.boton-secundario:hover:not(:disabled) {
-    color: #ffffff;
+.links a {
+    color: var(--verde-principal);
+    font-size: 13px;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-.enlace-alterno {
-    margin: 1rem 0 0;
-    text-align: center;
+.links a:hover {
+    color: var(--verde-hover);
+    text-decoration: underline;
 }
 
-.enlace-alterno a {
-    color: var(--color-principal);
-    font-weight: 600;
-}
-
-/* Mensajes de éxito y de error */
-.mensaje {
-    margin: 0 0 1rem;
-    padding: 0.65rem 0.75rem;
-    border-radius: 6px;
-}
-
-.mensaje-error {
-    color: var(--color-error);
-    background: var(--color-error-fondo);
-}
-
-.mensaje-exito {
-    color: var(--color-exito);
-    background: var(--color-exito-fondo);
-}
-
-/* Encabezado de las pantallas con sesión */
+/* ==============================
+   PANTALLA DE INICIO (CON SESIÓN)
+   ============================== */
 .encabezado {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 0.75rem;
-    padding: 0.75rem 1.5rem;
+    gap: 12px;
+    padding: 14px 24px;
     background: #ffffff;
-    border-bottom: 1px solid var(--color-borde);
+    border-bottom: 1px solid var(--borde);
 }
 
 .encabezado-titulo {
+    color: var(--azul-oscuro);
+    font-size: 18px;
     font-weight: 700;
-    color: var(--color-principal);
+    letter-spacing: 0.5px;
 }
 
 .encabezado-usuario {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 16px;
+    font-size: 14px;
+}
+
+.encabezado button {
+    width: auto;
+    padding: 8px 16px;
+}
+
+.boton-secundario {
+    background: transparent;
+    border: 1px solid var(--verde-principal);
+    color: var(--verde-hover);
+}
+
+.boton-secundario:hover:not(:disabled) {
+    background: var(--verde-principal);
+    color: #ffffff;
 }
 
 .contenido {
     max-width: 720px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    margin: 32px auto;
+    padding: 0 16px;
+}
+
+.contenido h1 {
+    margin-bottom: 12px;
+    color: var(--azul-oscuro);
+    font-size: 24px;
+}
+
+/* ==============================
+   RESPONSIVE
+   ============================== */
+@media (max-width: 480px) {
+    .login-card {
+        padding: 30px 25px;
+    }
+
+    .login-card h1 {
+        font-size: 24px;
+    }
+
+    .links {
+        flex-direction: column;
+        align-items: center;
+    }
 }

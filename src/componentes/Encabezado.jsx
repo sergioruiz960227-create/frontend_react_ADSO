@@ -3,13 +3,13 @@
 function Encabezado({ usuario, onCerrarSesion }) {
     return (
         <header className="encabezado">
-            <span className="encabezado-titulo">Autenticación de usuarios</span>
+            <span className="encabezado-titulo">TIENDA NUEVA</span>
             <div className="encabezado-usuario">
                 <span>
                     Usuario: <strong>{usuario}</strong>
                 </span>
                 <button type="button" className="boton-secundario" onClick={onCerrarSesion}>
-                    Cerrar sesión
+                    Cerrar Sesión
                 </button>
             </div>
         </header>

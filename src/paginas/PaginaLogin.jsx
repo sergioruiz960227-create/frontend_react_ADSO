@@ -7,7 +7,7 @@ function PaginaLogin() {
     const ubicacion = useLocation();
 
     return (
-        <main className="contenedor-centrado">
+        <main className="login-container">
             <FormularioLogin mensajeInicial={ubicacion.state?.mensaje} />
         </main>
     );

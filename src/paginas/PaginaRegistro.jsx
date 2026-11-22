@@ -3,7 +3,7 @@ import FormularioRegistro from '../componentes/FormularioRegistro';
 
 function PaginaRegistro() {
     return (
-        <main className="contenedor-centrado">
+        <main className="login-container">
             <FormularioRegistro />
         </main>
     );

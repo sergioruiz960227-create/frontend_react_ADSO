@@ -1,4 +1,4 @@
-// Formulario de inicio de sesión
+// Formulario de inicio de sesión (mismo diseño que la pantalla de login de Tienda Nueva)
 // Props: mensajeInicial (texto opcional, por ejemplo el aviso de registro exitoso)
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -40,33 +40,38 @@ function FormularioLogin({ mensajeInicial }) {
     }
 
     return (
-        <form className="formulario" onSubmit={enviar} noValidate>
-            <h1>Iniciar sesión</h1>
-            <Mensaje tipo="exito" texto={mensajeInicial} />
-            <Mensaje tipo="error" texto={error} />
-            <CampoFormulario
-                id="usuario"
-                etiqueta="Usuario"
-                valor={usuario}
-                onCambio={(evento) => setUsuario(evento.target.value)}
-                maxLongitud={50}
-                autoComplete="username"
-            />
-            <CampoFormulario
-                id="contrasena"
-                etiqueta="Contraseña"
-                tipo="password"
-                valor={contrasena}
-                onCambio={(evento) => setContrasena(evento.target.value)}
-                autoComplete="current-password"
-            />
-            <button type="submit" disabled={enviando}>
-                {enviando ? 'Ingresando...' : 'Ingresar'}
-            </button>
-            <p className="enlace-alterno">
-                ¿No tienes cuenta? <Link to="/registro">Regístrate</Link>
-            </p>
-        </form>
+        <section className="login-card">
+            <h1>TIENDA NUEVA</h1>
+            <p className="subtitulo">Sistema de Gestión Comercial</p>
+            <Mensaje tipo="exito" titulo="Registro exitoso" texto={mensajeInicial} />
+            <Mensaje tipo="error" titulo="Error de inicio de sesión" texto={error} />
+            <form onSubmit={enviar} noValidate>
+                <CampoFormulario
+                    id="usuario"
+                    etiqueta="Usuario"
+                    valor={usuario}
+                    onCambio={(evento) => setUsuario(evento.target.value)}
+                    placeholder="Ingrese su usuario"
+                    maxLongitud={50}
+                    autoComplete="username"
+                />
+                <CampoFormulario
+                    id="contrasena"
+                    etiqueta="Contraseña"
+                    tipo="password"
+                    valor={contrasena}
+                    onCambio={(evento) => setContrasena(evento.target.value)}
+                    placeholder="Ingrese su contraseña"
+                    autoComplete="current-password"
+                />
+                <button type="submit" disabled={enviando}>
+                    {enviando ? 'Ingresando...' : 'Iniciar Sesión'}
+                </button>
+            </form>
+            <div className="links">
+                <Link to="/registro">Registrar Usuario</Link>
+            </div>
+        </section>
     );
 }
 

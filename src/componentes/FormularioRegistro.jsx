@@ -1,4 +1,4 @@
-// Formulario de registro de usuarios
+// Formulario de registro de usuarios (mismo diseño que el registro de Tienda Nueva)
 // Al registrar con éxito, lleva al inicio de sesión mostrando el mensaje del servidor
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -44,40 +44,46 @@ function FormularioRegistro() {
     }
 
     return (
-        <form className="formulario" onSubmit={enviar} noValidate>
-            <h1>Crear cuenta</h1>
-            <Mensaje tipo="error" texto={error} />
-            <CampoFormulario
-                id="usuario"
-                etiqueta="Usuario"
-                valor={usuario}
-                onCambio={(evento) => setUsuario(evento.target.value)}
-                maxLongitud={50}
-                autoComplete="username"
-            />
-            <CampoFormulario
-                id="contrasena"
-                etiqueta="Contraseña"
-                tipo="password"
-                valor={contrasena}
-                onCambio={(evento) => setContrasena(evento.target.value)}
-                autoComplete="new-password"
-            />
-            <CampoFormulario
-                id="confirmacion"
-                etiqueta="Confirmar contraseña"
-                tipo="password"
-                valor={confirmacion}
-                onCambio={(evento) => setConfirmacion(evento.target.value)}
-                autoComplete="new-password"
-            />
-            <button type="submit" disabled={enviando}>
-                {enviando ? 'Registrando...' : 'Registrarme'}
-            </button>
-            <p className="enlace-alterno">
-                ¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link>
-            </p>
-        </form>
+        <section className="login-card">
+            <h1>Registro de Usuario</h1>
+            <p className="subtitulo">Complete la información del usuario</p>
+            <Mensaje tipo="error" titulo="Error de registro" texto={error} />
+            <form onSubmit={enviar} noValidate>
+                <CampoFormulario
+                    id="usuario"
+                    etiqueta="Usuario"
+                    valor={usuario}
+                    onCambio={(evento) => setUsuario(evento.target.value)}
+                    placeholder="Ingrese su usuario"
+                    maxLongitud={50}
+                    autoComplete="username"
+                />
+                <CampoFormulario
+                    id="contrasena"
+                    etiqueta="Contraseña"
+                    tipo="password"
+                    valor={contrasena}
+                    onCambio={(evento) => setContrasena(evento.target.value)}
+                    placeholder="Ingrese su contraseña"
+                    autoComplete="new-password"
+                />
+                <CampoFormulario
+                    id="confirmacion"
+                    etiqueta="Confirmar contraseña"
+                    tipo="password"
+                    valor={confirmacion}
+                    onCambio={(evento) => setConfirmacion(evento.target.value)}
+                    placeholder="Confirme su contraseña"
+                    autoComplete="new-password"
+                />
+                <button type="submit" disabled={enviando}>
+                    {enviando ? 'Registrando...' : 'Registrar Usuario'}
+                </button>
+            </form>
+            <div className="links">
+                <Link to="/login">Volver al inicio de sesión</Link>
+            </div>
+        </section>
     );
 }
 
