@@ -1,11 +1,163 @@
 /* Estilos base de la aplicación */
+:root {
+    --color-principal: #2d8600;
+    --color-principal-oscuro: #236800;
+    --color-texto: #1f2933;
+    --color-fondo: #f3f5f7;
+    --color-borde: #cbd2d9;
+    --color-error: #b42318;
+    --color-error-fondo: #fdecea;
+    --color-exito: #1b5e20;
+    --color-exito-fondo: #e6f4ea;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: system-ui, sans-serif;
+    color: var(--color-texto);
+    background: var(--color-fondo);
 }
 
-main {
-    max-width: 480px;
-    margin: 3rem auto;
+/* Centra el formulario en la pantalla */
+.contenedor-centrado {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+/* Tarjeta del formulario */
+.formulario {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    background: #ffffff;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+}
+
+.formulario h1 {
+    margin: 0 0 1.25rem;
+    font-size: 1.5rem;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+}
+
+.campo label {
+    font-weight: 600;
+}
+
+.campo input {
+    padding: 0.6rem 0.75rem;
+    font-size: 1rem;
+    border: 1px solid var(--color-borde);
+    border-radius: 6px;
+}
+
+.campo input:focus {
+    outline: 2px solid var(--color-principal);
+    border-color: var(--color-principal);
+}
+
+/* Botones */
+button {
+    padding: 0.65rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: var(--color-principal);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.formulario button {
+    width: 100%;
+}
+
+button:hover:not(:disabled) {
+    background: var(--color-principal-oscuro);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.boton-secundario {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    color: var(--color-principal);
+    background: transparent;
+    border: 1px solid var(--color-principal);
+}
+
+.boton-secundario:hover:not(:disabled) {
+    color: #ffffff;
+}
+
+.enlace-alterno {
+    margin: 1rem 0 0;
+    text-align: center;
+}
+
+.enlace-alterno a {
+    color: var(--color-principal);
+    font-weight: 600;
+}
+
+/* Mensajes de éxito y de error */
+.mensaje {
+    margin: 0 0 1rem;
+    padding: 0.65rem 0.75rem;
+    border-radius: 6px;
+}
+
+.mensaje-error {
+    color: var(--color-error);
+    background: var(--color-error-fondo);
+}
+
+.mensaje-exito {
+    color: var(--color-exito);
+    background: var(--color-exito-fondo);
+}
+
+/* Encabezado de las pantallas con sesión */
+.encabezado {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    background: #ffffff;
+    border-bottom: 1px solid var(--color-borde);
+}
+
+.encabezado-titulo {
+    font-weight: 700;
+    color: var(--color-principal);
+}
+
+.encabezado-usuario {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contenido {
+    max-width: 720px;
+    margin: 2rem auto;
     padding: 0 1rem;
 }
