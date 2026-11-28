@@ -1,5 +1,5 @@
 // Formulario de inicio de sesión (mismo diseño que la pantalla de login de Tienda Nueva)
-// Props: mensajeInicial (texto opcional, por ejemplo el aviso de registro exitoso)
+// Props: aviso (opcional): { tipo, titulo, texto }, por ejemplo el aviso de registro exitoso o de sesión vencida
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import CampoFormulario from './CampoFormulario';
@@ -7,7 +7,7 @@ import Mensaje from './Mensaje';
 import { iniciarSesion } from '../servicios/authServicio';
 import { guardarSesion } from '../servicios/sesionServicio';
 
-function FormularioLogin({ mensajeInicial }) {
+function FormularioLogin({ aviso }) {
     const navegar = useNavigate();
 
     // Estado: valores escritos, mensaje de error y si hay una petición en curso
@@ -32,7 +32,7 @@ function FormularioLogin({ mensajeInicial }) {
         setEnviando(false);
 
         if (resultado.ok) {
-            guardarSesion(usuario.trim());
+            guardarSesion(resultado.usuario.usuario, resultado.token);
             navegar('/inicio');
         } else {
             setError(resultado.mensaje);
@@ -43,7 +43,7 @@ function FormularioLogin({ mensajeInicial }) {
         <section className="login-card">
             <h1>TIENDA NUEVA</h1>
             <p className="subtitulo">Sistema de Gestión Comercial</p>
-            <Mensaje tipo="exito" titulo="Registro exitoso" texto={mensajeInicial} />
+            {aviso && !error && <Mensaje tipo={aviso.tipo} titulo={aviso.titulo} texto={aviso.texto} />}
             <Mensaje tipo="error" titulo="Error de inicio de sesión" texto={error} />
             <form onSubmit={enviar} noValidate>
                 <CampoFormulario

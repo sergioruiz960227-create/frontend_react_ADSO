@@ -37,7 +37,8 @@ function FormularioRegistro() {
 
         if (resultado.ok) {
             // Se envía el mensaje del servidor a la pantalla de inicio de sesión
-            navegar('/login', { state: { mensaje: resultado.mensaje } });
+            const aviso = { tipo: 'exito', titulo: 'Registro exitoso', texto: resultado.mensaje };
+            navegar('/login', { state: { aviso } });
         } else {
             setError(resultado.mensaje);
         }
