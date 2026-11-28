@@ -33,7 +33,7 @@ function FormularioLogin({ aviso }) {
 
         if (resultado.ok) {
             guardarSesion(resultado.usuario.usuario, resultado.token);
-            navegar('/inicio');
+            navegar('/usuarios');
         } else {
             setError(resultado.mensaje);
         }
